@@ -1,0 +1,30 @@
+{
+  "name": "weekone",
+  "version": "1.0.0",
+  "description": "Classwork for Javascript IT122",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "Hello World"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Peacegypsy/IT122Repo.git#Main"
+  },
+  "keywords": [
+    "node",
+    "npm",
+    "javascript"
+  ],
+  "author": "Christina Sherman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Peacegypsy/IT122Repo/issues"
+  },
+  "homepage": "https://github.com/Peacegypsy/IT122Repo/tree/Main#readme",
+  "private": false,
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}
