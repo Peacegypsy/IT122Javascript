@@ -39,8 +39,8 @@ const getAllAlbums = () => {
     return albums;
 }
 
-const getAlbum = (id) => {
-    return albums.find(album => album.id === id);
+const getAlbum = (albumTitle) => {
+    return albums.find(albumTitle => albumTitle === albumTitle);
 }
 
 module.exports = {albums, getAlbum, getAllAlbums};

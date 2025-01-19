@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <div class="mainTitle">
+        <h3>Albums</h3>
+        <% albums.forEach(function (album) { %>
+            <li><%= album.albumTitle %></li>
+        <% }) %>
+    </div>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+</main>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-
+"use strict";
 
 let data = require('./data.js');
 const express = require("express");
@@ -10,9 +10,27 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 const albums = data.albums;
-
+// home page
 app.get('/', (req, res) => {
-    res.render('home.ejs', {albums: albums});
+    res.render('pages/index', {albums: albums});
+})
+
+//details page
+app.get('/detail', (req, res) => {
+    let result = data.getAlbum(req.query.albumTitle);
+    res.render('pages/details', {albumTitle: req.query.albumTitle, result: result});
+});
+
+app.post('/pages/detail', (req, res) => {
+    let found = data.getAlbum(req.query.albumTitle);
+    res.render('pages/details', {albumTitle: req.query.albumTitle, result: found, albums: data.getAllAlbums()});
+})
+
+//error handler
+app.use((req, res) => {
+    res.type('text/plain');
+    res.status(404);
+    res.render(`error ${res.statusCode}`);
 })
 
 module.exports = app;
@@ -20,38 +38,3 @@ app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 })
 
-
-// import http from "http";
-// import fs from "fs";
-//
-// const server = http.createServer((req, res) => {
-//     const url = req.url;
-//
-//     if (url === '/' || url === '/index') {
-//         fs.readFile('index.html', (err, data) => {
-//             if (err) {
-//                 res.writeHead(500, {'Content-Type': 'text/plain'});
-//                 res.end('500 - Internal Server Error');
-//             }else {
-//                 res.writeHead(200, {'Content-Type': 'text/html'});
-//                 res.end(data);
-//             }
-//         });
-//     }else if (url === '/about') {
-//         fs.readFile('about.html', (err, data) => {
-//             if (err) {
-//                 res.writeHead(500, {'Content-Type': 'text/plain'});
-//                 res.end('500 - Internal Server Error');
-//             }else {
-//                 res.writeHead(200, {'Content-Type': 'text/html'});
-//                 res.end(data);
-//             }
-//         });
-//     } else {
-//         res.writeHead(404, {'Content-Type': 'text/html'});
-//         res.end('404 - Internal Server Error');
-//     }
-// });
-// server.listen(3000, () => {
-//     console.log('Server started on port 3000');
-// });

@@ -1,0 +1,11 @@
+<html>
+    <body>
+        <% if (album) { %>
+        <h3><%= album %> details </h3>
+        <li>Artist: <%= album.artist %></li>
+        <li>Album Name: <%= album.albumTitle %></li>
+        <% } else { %>
+            <h2><%= album %> not found </h2>
+        <% } %>
+    </body>
+</html>
