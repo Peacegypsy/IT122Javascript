@@ -1,37 +1,38 @@
 "use strict";
 
-let data = require('./data.js');
+let albums = require('./data.js');
 const express = require("express");
 const app = express();
 const port = 3000;
 app.set('view engine', 'ejs');
-app.use(express.static("public"));
+app.use(express.static(__dirname + "public"));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-const albums = data.albums;
+
 // home page
 app.get('/', (req, res) => {
-    res.render('pages/index', {albums: albums});
+    res.render('pages/home', {albums: albums.getAllAlbums()});
 })
 
 //details page
-app.get('/detail', (req, res) => {
-    let result = data.getAlbum(req.query.albumTitle);
-    res.render('pages/details', {albumTitle: req.query.albumTitle, result: result});
+app.get('/detail', (req,res) => {
+    const result = albums.getAlbum(req.query.artist);
+    res.render("pages/details", {
+            artist: req.query.artist,
+            result,
+            albums: albums.getAllAlbums()
+        }
+    );
 });
 
-app.post('/pages/detail', (req, res) => {
-    let found = data.getAlbum(req.query.albumTitle);
-    res.render('pages/details', {albumTitle: req.query.albumTitle, result: found, albums: data.getAllAlbums()});
-})
 
-//error handler
-app.use((req, res) => {
+//error handlers
+app.use((req,res,next)=>{
     res.type('text/plain');
-    res.status(404);
-    res.render(`error ${res.statusCode}`);
-})
+    res.status(404).send('Not Found');
+});
+
 
 module.exports = app;
 app.listen(port, () => {

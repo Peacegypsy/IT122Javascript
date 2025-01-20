@@ -1,4 +1,6 @@
-const albums = [
+'use strict';
+
+let albums = [
     {"artist": "Temple of the dog",
         "albumTitle": "Temple of the dog",
         "songs": [
@@ -39,8 +41,11 @@ const getAllAlbums = () => {
     return albums;
 }
 
-const getAlbum = (albumTitle) => {
-    return albums.find(albumTitle => albumTitle === albumTitle);
-}
+const getAlbum = (artist) => {
+    return albums.find((item) => {
+        return item.artist.toLowerCase() === artist.toLowerCase();
+    });
+};
 
-module.exports = {albums, getAlbum, getAllAlbums};
+
+module.exports = { getAlbum, getAllAlbums};

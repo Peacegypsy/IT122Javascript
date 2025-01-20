@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <title>Albums Home</title>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<h3>Band/Artist</h3>
+<% albums.forEach(function(album) { %>
+<li><a href="/detail?artist=<%= album.artist %>"> <%= album.artist %></a></li>
+<% }); %>
+
+</body>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+</html>
