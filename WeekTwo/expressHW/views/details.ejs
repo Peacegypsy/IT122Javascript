@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <title>Album Details</title>
+    <%- include('./partials/head'); %>
+</head>
+<body class="container">
+<header>
+    <%- include('./partials/header'); %>
+</header>
+    <% if (album) { %>
+    <h3>Artist: <%= album.artist %> </h3>
+
+    <h4>Album Name: <%= album.albumTitle %></h4>
+    <h5>Songs</h5>
+        <% album.songs.forEach( function(song) { %>
+            <li><%= song %></li>
+        <% }); %>
+    <% } else { %>
+        <p><em>No artist found.</em></p>
+    <% } %>
+<hr>
+<footer>
+    <%- include('./partials/footer'); %>
+</footer>
+</body>
+</html>
