@@ -3,34 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>About</title>
-  <style>
-    header {
-      width: 100%;
-      display: inline-block;
-      margin: 5px;
-      padding: 5px;
-      align-content: center;
-    }
-    body {
-      width: 100%;
-      display: inline-block;
-      margin: 5px;
-      padding: 5px;
-      align-content: center;
-      font-size: 1.5rem;
-    }
-
-    footer {
-      display: inline-block;
-      margin: 5px;
-      padding: 5px;
-      font-size: xx-small;
-    }
-  </style>
 </head>
-<header>The About Page</header>
-<body>
-
+<body class="container">
+<header>
+    <%- include('./partials/header'); %>
+</header>
 <h2>Welcome to the About page!</h2>
 <hr>
 <br>
@@ -38,7 +15,7 @@
   This is a pallus cat. They are they only cat with round pupils. They look like a cranky grandpa.
   <br>
   <img id="cat-img" src="https://smea.uw.edu/wp-content/uploads/sites/11/2017/03/CURRENTSBLOG_Cat_2-350x233.jpg" width="450" height="300" alt="picture of a pallus cat">
-
 </p>
+<footer><%- include('./partials/footer'); %></footer>
 </body>
 </html>
